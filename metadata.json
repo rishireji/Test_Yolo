@@ -1,0 +1,9 @@
+{
+  "name": "YOLO - Secure Anonymous Video Chat",
+  "description": "A production-grade, secure, and anonymous one-to-one video chat application with modern UI/UX and matchmaking logic.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

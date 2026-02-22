@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO | Secure Anonymous Video Chat</title>
+    <meta name="description" content="Secure, anonymous, end-to-end encrypted video chat.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-shimmer {
+          background: linear-gradient(90deg, #18181b 25%, #27272a 50%, #18181b 75%);
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+        
+        .scanline-effect::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                      linear-gradient(90deg, rgba(220, 38, 38, 0.03), rgba(0, 220, 38, 0.01), rgba(38, 38, 220, 0.03));
+          background-size: 100% 3px, 4px 100%;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .scanline-effect::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, 
+            transparent 0%, 
+            rgba(220, 38, 38, 0.08) 50%, 
+            transparent 51%
+          );
+          pointer-events: none;
+          animation: scanline 6s linear infinite;
+          z-index: 2;
+        }
+
+        @keyframes floatUpEnhanced {
+          0% {
+            transform: translateY(0) scale(0.5) rotate(0deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+            transform: translateY(-20px) scale(1.2) rotate(var(--rotation));
+          }
+          100% {
+            transform: translateY(-500px) scale(0.8) rotate(calc(var(--rotation) * 2));
+            opacity: 0;
+          }
+        }
+
+        @keyframes glitch {
+          0% { text-shadow: 2px 0 0 #ff0000, -2px 0 0 #00ff00; }
+          25% { text-shadow: -2px 0 0 #ff0000, 2px 0 0 #00ff00; }
+          50% { text-shadow: 2px -2px 0 #ff0000, -2px 2px 0 #00ff00; }
+          75% { text-shadow: -2px 2px 0 #ff0000, -2px 2px 0 #00ff00; }
+          100% { text-shadow: 2px 0 0 #ff0000, -2px 0 0 #00ff00; }
+        }
+        .glitch-text:hover {
+          animation: glitch 0.2s infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "peerjs": "https://esm.sh/peerjs@^1.5.5",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+</body>
+</html>
